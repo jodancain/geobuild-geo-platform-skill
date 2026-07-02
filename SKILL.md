@@ -72,14 +72,15 @@ Run the customer GEO workflow in this order:
 
 ## Verification Baseline
 
-For the original production target, current verified baseline as of 2026-06-29:
+For the original production target, always refresh the live baseline before current-state answers. Last observed during public-skill sync on 2026-07-02:
 
 - Base URL: `https://geo.youngtuo.win/build`
-- Release commit: `024a6242eb34f3adee38875eeb63f3be15c8173d`
+- Release commit: `a545279e445d6f3dfdb7de5ccb53106c71427c88`
 - Release source: `github-actions-zeabur-upload`
 - Health: DB true, Redis true, Agent kernel true
 - Reach platforms ready: Doubao, DeepSeek, Claude, ChatGPT, Gemini
 - Convex: enabled, mutation token configured, doctor `ok=true`, probe `status=in_sync`, gaps empty
+- Hexclave: enabled, but publishable client key and Data Vault env still missing unless live health proves otherwise
 - Workspace reads: `source=auto` resolves to Convex for state, material summary, reach summary, and customer operations
 
 Always refresh this before answering "latest", "current", "ready", or "is it working".

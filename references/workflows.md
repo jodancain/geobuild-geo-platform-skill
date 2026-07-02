@@ -76,6 +76,54 @@ curl -sS "$BASE/api/workspace/evidence-reconcile/markdown"
 
 Do not run reach analysis until materials are readable enough or the user explicitly accepts a partial-material analysis.
 
+### 1.1 Visual Artifact Storage
+
+Check PDF page images, uploaded images, Office embedded images, and archive child images before long-running retests or public reports:
+
+```bash
+curl -sS "$BASE/api/workspace/visual-artifact-storage-plan"
+curl -sS "$BASE/api/workspace/visual-artifact-storage-plan/markdown"
+```
+
+Preview repair for older artifacts that are filesystem-only, missing DB fallback, or need object copies:
+
+```bash
+curl -sS -X POST "$BASE/api/workspace/visual-artifact-storage-plan/repair" \
+  "${ADMIN_HEADER[@]}" \
+  -H "Content-Type: application/json" \
+  -d '{"dryRun":true,"limit":50}'
+```
+
+Only after previewing, execute with `dryRun:false`. The repair endpoint appends DB embedded fallback, DB blob fallback, and S3/R2/COS object-copy metadata; it does not delete old local files, old fallback data, or `relativePath`. When a filesystem-only Google Drive artifact lost its local file, repair tries to re-download the original Drive file from stored metadata before marking it missing. If no object bucket exists, `GOOGLE_DRIVE_VISUAL_ARTIFACT_DB_BLOB_ENABLED=true` with `GOOGLE_DRIVE_VISUAL_ARTIFACT_DB_BLOB_MAX_MB=32` stores large recovered artifacts in Postgres `VisualArtifactBlob`.
+
+## 1.5 Keyword Intelligence
+
+Build the AiDSO-style keyword loop before or immediately after reach analysis:
+
+```bash
+curl -sS "$BASE/api/workspace/keyword-intelligence"
+curl -sS "$BASE/api/workspace/keyword-intelligence/markdown"
+```
+
+Import external search/trend signals with admin auth when an industry keyword export is available:
+
+```bash
+curl -sS -X POST "$BASE/api/workspace/keyword-intelligence/signals" \
+  "${ADMIN_HEADER[@]}" \
+  -H "Content-Type: application/json" \
+  -d '{"provider":"baidu-index-export","observedAt":"2026-07-01","keywords":[{"keyword":"免浆牛蛙","group":"core","searchVolume":3200,"trend":"rising","competition":"medium","relatedTerms":["免浆切块牛蛙"]}]}'
+```
+
+This is not a traditional SEO keyword report. The loop must be:
+
+```text
+core term -> AI expansion -> category filtering -> question set -> content matrix -> AI-platform retest -> next keyword round
+```
+
+Traffic values are internal signals until an external search/trend connector is attached. Use material hits, question coverage, content coverage, and retest coverage as the default basis.
+
+Optional external search/trend signals can also be imported through `GEOBUILD_KEYWORD_EXTERNAL_SIGNALS_JSON`. The value may be a JSON array or an object with `provider`, `observedAt`, and `keywords` / `terms` / `items` / `data` / `rows`. Supported per-keyword fields include `keyword` / `term` / `word`, `group`, `searchVolume` / `volume` / `monthlySearches` / `heat`, `trend`, `competition`, `cpc`, `relatedTerms`, and `note`. GeoBuild treats API/env imports as configured external evidence and still uses internal question/content/retest coverage to decide whether the keyword has entered the AI-platform reach loop.
+
 ## 2. Reach Analysis
 
 Run analysis:
@@ -158,7 +206,19 @@ Delivery gate:
 ```bash
 curl -sS "$BASE/api/workspace/launch-package/delivery-gate/markdown"
 curl -sS "$BASE/api/workspace/repurpose-matrix/markdown"
+curl -sS "$BASE/api/workspace/social-upload-tasks/readiness"
 ```
+
+Safe social upload dry-run smoke. This may create missing upload tasks from the latest launch package, then processes one queued task without posting to any external account:
+
+```bash
+curl -sS -X POST "$BASE/api/workspace/social-upload-tasks/smoke" \
+  "${ADMIN_HEADER[@]}" \
+  -H "Content-Type: application/json" \
+  -d '{"createIfMissing":true,"repairAssetBackups":true}'
+```
+
+The smoke route remains dry-run only. `repairAssetBackups=true` also writes or refreshes the task-level database backup for `cover.png`, `caption.md`, and `payload.json`, so a Zeabur restart can restore local files even before an external S3/R2/COS bucket is configured.
 
 Mark platform status only after real human confirmation:
 
@@ -170,6 +230,13 @@ curl -sS -X PATCH "$BASE/api/workspace/launch-package" \
 ```
 
 ## 6. Retest And Strategy Feedback
+
+DeepSeek web-search plugin smoke:
+
+```bash
+curl -sS "$BASE/api/workspace/deepseek-web-search-smoke"
+curl -sS "$BASE/api/workspace/connector-readiness"
+```
 
 Queue retest:
 
@@ -259,6 +326,9 @@ For every substantial run:
 
 ```bash
 curl -sS "$BASE/api/workspace/customer-flow-regression/markdown"
+curl -sS "$BASE/api/workspace/connector-readiness"
+curl -sS "$BASE/api/workspace/deepseek-web-search-smoke"
+curl -sS "$BASE/api/workspace/social-upload-tasks/readiness"
 curl -sS "$BASE/api/workspace/run-package/markdown"
 curl -sS "$BASE/api/workspace/context-drive"
 curl -sS "$BASE/api/workspace/convex-sync?probe=1"

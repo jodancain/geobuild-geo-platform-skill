@@ -1,8 +1,8 @@
 # GeoBuild GEO Platform Skill
 
-Portable Codex skill for operating, auditing, or recreating GeoBuild-style Generative Engine Optimization workflows.
+Portable Codex/Claude skill for operating, auditing, or recreating GeoBuild-style Generative Engine Optimization workflows.
 
-The skill covers material intake, evidence verification, AI-platform reach analysis, recommendations, content generation, launch packages, retest, strategy feedback, Convex realtime parity, Agent run traces, ContextDrive, and the 88-tool GeoBuild Agent registry.
+The skill covers material intake, evidence verification, AI-platform reach analysis, recommendations, content generation, launch packages, retest, strategy feedback, Convex realtime parity, Agent run traces, ContextDrive, external skill import preview, visual artifact repair, and the 91-tool GeoBuild Agent registry.
 
 ## Install In Codex
 
@@ -34,12 +34,18 @@ If this repository is cloned as the current directory:
 node scripts/live-smoke.mjs --base-url https://geo.youngtuo.win/build --json
 ```
 
+For production parity checks:
+
+```bash
+node scripts/live-smoke.mjs --base-url https://geo.youngtuo.win/build --require-convex --json
+```
+
 ## Contents
 
 - `SKILL.md` - Codex skill entrypoint.
 - `references/architecture.md` - GeoBuild architecture and runtime layers.
 - `references/workflows.md` - API and operational workflow runbook.
-- `references/tool-map.md` - 88-tool Agent registry map.
+- `references/tool-map.md` - 91-tool Agent registry map.
 - `references/implementation-blueprint.md` - build-from-scratch implementation plan.
 - `scripts/live-smoke.mjs` - dependency-free production smoke test.
 

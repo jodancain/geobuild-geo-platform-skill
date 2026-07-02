@@ -2,7 +2,7 @@
 
 The canonical in-repo registry is `src/lib/agent-runtime/workspace-tools.ts`.
 
-Last extracted count: 88 tools.
+Last extracted count: 91 tools.
 
 ## Intake And Evidence
 
@@ -24,6 +24,7 @@ Last extracted count: 88 tools.
 ## Analysis, Strategy, Content, Publish
 
 - `analyze_product_materials`: generate AI-platform reach baseline, coverage, evidence gaps, and competitor risk.
+- `audit_keyword_intelligence`: build an AiDSO-style keyword library, industry word board, smart selection, optional external search/trend signal board, question set, content matrix, and retest feedback loop for AI-platform reach.
 - `suggest_reach_strategy`: generate recommendations for recognition, understanding, citation, recommendation, and repetition.
 - `generate_reach_content`: generate website drafts, FAQ, comparison, case, brand fact, or social content.
 - `prepare_launch_package`: build website, Xiaohongshu, WeChat, Douyin publish package.
@@ -50,6 +51,7 @@ Last extracted count: 88 tools.
 - `audit_material_sample_request_fulfillment`: verify whether requested samples/captions/access are satisfied.
 - `audit_material_sample_next_step_gate`: decide whether to analyze now or wait for more samples.
 - `audit_visual_artifact_storage_plan`: check visual artifact storage and migration risks.
+- `repair_visual_artifact_storage`: dry-run or confirmed repair for visual artifact storage/reference gaps.
 - `run_material_upgrade_batch`: queue safe automatic repair steps, default dry-run.
 - `backfill_material_ingest_diagnostics`: metadata-only backfill for old SourceAssets.
 - `execute_material_ingest_repair`: execute safe recrawls while preserving superseded assets.
@@ -72,7 +74,7 @@ Last extracted count: 88 tools.
 
 - `audit_agent_capability_health`: aggregate skill registry, decisions, proof drift, delivery gate, ContextDrive, strategy feedback, run trace, visual artifact, and connector state.
 - `audit_production_sync_readiness`: verify production health, release metadata, GitHub commit, skill registry, and ContextDrive sync.
-- `audit_connector_readiness`: check Drive, Composio, Ark, Claude Agent kernel, and token readiness.
+- `audit_connector_readiness`: check Drive, Hexclave OAuth/Data Vault, legacy Composio fallback, Ark, Claude Agent kernel, and token readiness.
 - `audit_run_trace_quality`: check trace verification summaries, undo notes, tool timeline, and failure review path.
 - `audit_agent_harness_linkage`: check task node, run trace, and ContextDrive commit linkage.
 - `repair_agent_harness_linkage`: dry-run or confirmed repair of harness linkage gaps.
@@ -84,6 +86,7 @@ Last extracted count: 88 tools.
 - `run_operator_actions`: dry-run or confirmed operator actions; business writes require `includeBusinessWrites=true` and confirmation.
 - `audit_operator_automation_readiness`: decide whether cron/heartbeat operator automation is safe.
 - `build_geo_skill_proposals`: convert external radar and review queue into skill proposals.
+- `preview_external_skill_import`: safely preview an external Claude/Codex skill before any import or install; default writes only auditable research notes when saved.
 - `audit_skill_proposal_sync`: check whether ready proposals are already covered.
 - `audit_skill_source_discovery`: discover local/reminder/GitHub skill sources.
 - `build_geo_research_signal_brief`: convert external capability and current gaps into research/action brief.
@@ -123,12 +126,12 @@ Primary route root:
 
 Important groups:
 
-- health and readiness: `/api/healthz`, `/api/ops/health`, `/api/workspace/convex-doctor`, `/api/workspace/convex-sync`
+- health and readiness: `/api/healthz`, `/api/ops/health`, `/api/workspace/convex-doctor`, `/api/workspace/convex-sync`, `/api/workspace/connector-readiness`, `/api/workspace/deepseek-web-search-smoke`
 - customer state: `/api/workspace/state`, `/api/workspace/customer-operations`, `/api/workspace/customer-operations/worker`
 - intake/materials: `/api/workspace/intake`, `/intake/chat`, `/intake/url`, `/source-assets`, `/source-assets/upload`, `/material-router`
 - material audits: `/material-readiness`, `/material-evidence-brief`, `/material-route-fulfillment`, `/material-repair-plan`, `/material-repair-lifecycle`
-- analysis/strategy: `/analysis`, `/recommendations`, `/surface-plan`, `/strategy-feedback`, `/strategy-evolution-plan`
-- content/publish: `/generated-content`, `/content-fact-guard`, `/launch-package`, `/launch-package/delivery-gate`, `/repurpose-matrix`
+- analysis/strategy: `/analysis`, `/keyword-intelligence`, `/keyword-intelligence/signals`, `/recommendations`, `/surface-plan`, `/strategy-feedback`, `/strategy-evolution-plan`
+- content/publish: `/generated-content`, `/content-fact-guard`, `/launch-package`, `/launch-package/delivery-gate`, `/repurpose-matrix`, `/social-upload-tasks`, `/social-upload-tasks/readiness`
 - retest: `/retest`, `/retest-batches`, `/retest-batch-quality`, `/retest-placeholder-repair`
 - Agent memory: `/agent-foundation`, `/agent-task-nodes`, `/context-drive`, `/run-package`, `/run-trace-quality`
 

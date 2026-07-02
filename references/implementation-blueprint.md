@@ -215,7 +215,7 @@ Claim "GeoBuild/GEO all functions implemented" only when:
 - all mutating routes have auth and dry-run/confirmation boundaries
 - all generated content passes fact guard before publish-ready status
 - customer operations expose runId/progress/cancel/retry
-- Agent registry covers the 88 canonical tool names or the target has a documented equivalent map
+- Agent registry covers the 91 canonical tool names from `src/lib/agent-runtime/workspace-tools.ts` or the target has a documented equivalent map
 - live smoke or local equivalent proves runtime readiness
 - deployment/release metadata identifies the exact code version
 

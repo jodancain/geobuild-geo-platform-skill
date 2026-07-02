@@ -6,10 +6,10 @@ GeoBuild is a Next.js, Prisma/Postgres, Redis, Convex, and Agent-runtime product
 https://geo.youngtuo.win/build
 ```
 
-The original private/local GeoBuild implementation repo used to extract this skill is:
+The canonical local repo is:
 
 ```text
-ai/geobuild
+/Users/qiuxuanmai/SynologyDrive/ai/geobuild
 ```
 
 ## Product Boundary
@@ -36,11 +36,11 @@ materials -> evidence -> reach analysis -> recommendations -> content -> launch 
 
 ## Production Baseline
 
-Last verified on 2026-06-29:
+Always refresh live state before current-state answers. Last observed during public-skill sync on 2026-07-02:
 
 ```text
 baseUrl=https://geo.youngtuo.win/build
-buildCommit=024a6242eb34f3adee38875eeb63f3be15c8173d
+buildCommit=a545279e445d6f3dfdb7de5ccb53106c71427c88
 buildRef=main
 releaseSource=github-actions-zeabur-upload
 convexProject=geobuild-youngtuo-win
@@ -48,6 +48,8 @@ convexDeployment=giant-antelope-146
 convexUrl=https://giant-antelope-146.convex.cloud
 convexProbe.status=in_sync
 convexDoctor.gaps=[]
+reachPlatforms=Doubao,DeepSeek,Claude,ChatGPT,Gemini ready
+hexclave=enabled but missing publishable client key and Data Vault env
 ```
 
 Treat this as a baseline, not permanent truth. Refresh live state before current-state answers.
@@ -121,7 +123,7 @@ npm run convex:cutover
 npm run deploy:zeabur
 ```
 
-If the user environment has npm shim problems, use a known-good local Node/npm binary instead of the broken shim. In the original extraction environment this was:
+Use the fixed local Node/npm if the user environment has npm shim problems:
 
 ```bash
 /Users/qiuxuanmai/.local/node-v22.14.0-darwin-arm64/bin/npm
