@@ -40,7 +40,7 @@ Always refresh live state before current-state answers. Last observed during soc
 
 ```text
 baseUrl=https://geo.youngtuo.win/build
-buildCommit=72981373ae4531da339a3cde431a9e3c734c395e
+buildCommit=b38bfdcfc748ca8a97ab29c4d8ccefe78af57b23
 buildRef=main
 releaseSource=github-actions-zeabur-upload
 convexProject=geobuild-youngtuo-win
