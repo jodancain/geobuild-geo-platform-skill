@@ -36,11 +36,11 @@ materials -> evidence -> reach analysis -> recommendations -> content -> launch 
 
 ## Production Baseline
 
-Always refresh live state before current-state answers. Last observed during public-skill sync on 2026-07-02:
+Always refresh live state before current-state answers. Last observed during social-upload execute gate deployment on 2026-07-02:
 
 ```text
 baseUrl=https://geo.youngtuo.win/build
-buildCommit=a545279e445d6f3dfdb7de5ccb53106c71427c88
+buildCommit=ff09f5b0c9bfaa97f987a2a187de3730fc69fc87
 buildRef=main
 releaseSource=github-actions-zeabur-upload
 convexProject=geobuild-youngtuo-win
@@ -49,6 +49,8 @@ convexUrl=https://giant-antelope-146.convex.cloud
 convexProbe.status=in_sync
 convexDoctor.gaps=[]
 reachPlatforms=Doubao,DeepSeek,Claude,ChatGPT,Gemini ready
+deepSeekWebSearch=ready
+socialUploadExecuteRoute=deployed, admin-gated, blocked by runner/account readiness until explicitly configured
 hexclave=enabled but missing publishable client key and Data Vault env
 ```
 

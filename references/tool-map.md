@@ -2,7 +2,7 @@
 
 The canonical in-repo registry is `src/lib/agent-runtime/workspace-tools.ts`.
 
-Last extracted count: 91 tools.
+Last extracted count: 93 tools.
 
 ## Intake And Evidence
 
@@ -25,10 +25,12 @@ Last extracted count: 91 tools.
 
 - `analyze_product_materials`: generate AI-platform reach baseline, coverage, evidence gaps, and competitor risk.
 - `audit_keyword_intelligence`: build an AiDSO-style keyword library, industry word board, smart selection, optional external search/trend signal board, question set, content matrix, and retest feedback loop for AI-platform reach.
+- `discover_keyword_external_signals`: use DeepSeek web_search to discover external industry/search keyword signals and write them into the keyword board.
 - `suggest_reach_strategy`: generate recommendations for recognition, understanding, citation, recommendation, and repetition.
 - `generate_reach_content`: generate website drafts, FAQ, comparison, case, brand fact, or social content.
 - `prepare_launch_package`: build website, Xiaohongshu, WeChat, Douyin publish package.
 - `audit_launch_package_delivery`: check package publish/retest/audit readiness.
+- `execute_social_upload_task`: execute exactly one reviewed social-auto-upload task behind admin, readiness, account-login, and human-confirmation gates.
 - `audit_source_hygiene`: check source binding, link health, forbidden claims, high-risk claims, and fact conflicts.
 - `audit_web_route_backlog`: aggregate public web/Drive route backlog and crawler/fallback needs.
 - `reconcile_evidence_sources`: rank sources, extract key facts, and identify conflicts.
@@ -130,8 +132,8 @@ Important groups:
 - customer state: `/api/workspace/state`, `/api/workspace/customer-operations`, `/api/workspace/customer-operations/worker`
 - intake/materials: `/api/workspace/intake`, `/intake/chat`, `/intake/url`, `/source-assets`, `/source-assets/upload`, `/material-router`
 - material audits: `/material-readiness`, `/material-evidence-brief`, `/material-route-fulfillment`, `/material-repair-plan`, `/material-repair-lifecycle`
-- analysis/strategy: `/analysis`, `/keyword-intelligence`, `/keyword-intelligence/signals`, `/recommendations`, `/surface-plan`, `/strategy-feedback`, `/strategy-evolution-plan`
-- content/publish: `/generated-content`, `/content-fact-guard`, `/launch-package`, `/launch-package/delivery-gate`, `/repurpose-matrix`, `/social-upload-tasks`, `/social-upload-tasks/readiness`
+- analysis/strategy: `/analysis`, `/keyword-intelligence`, `/keyword-intelligence/discover`, `/keyword-intelligence/signals`, `/recommendations`, `/surface-plan`, `/strategy-feedback`, `/strategy-evolution-plan`
+- content/publish: `/generated-content`, `/content-fact-guard`, `/launch-package`, `/launch-package/delivery-gate`, `/repurpose-matrix`, `/social-upload-tasks`, `/social-upload-tasks/readiness`, `/social-upload-tasks/smoke`, `/social-upload-tasks/execute`
 - retest: `/retest`, `/retest-batches`, `/retest-batch-quality`, `/retest-placeholder-repair`
 - Agent memory: `/agent-foundation`, `/agent-task-nodes`, `/context-drive`, `/run-package`, `/run-trace-quality`
 

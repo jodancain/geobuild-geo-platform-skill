@@ -2,7 +2,7 @@
 
 Portable Codex/Claude skill for operating, auditing, or recreating GeoBuild-style Generative Engine Optimization workflows.
 
-The skill covers material intake, evidence verification, AI-platform reach analysis, recommendations, content generation, launch packages, retest, strategy feedback, Convex realtime parity, Agent run traces, ContextDrive, external skill import preview, visual artifact repair, and the 91-tool GeoBuild Agent registry.
+The skill covers material intake, evidence verification, AI-platform reach analysis, AiDSO-style keyword intelligence, recommendations, content generation, launch packages, social-upload dry-run/execute gates, retest, strategy feedback, Convex realtime parity, Agent run traces, ContextDrive, external skill import preview, visual artifact repair, and the 93-tool GeoBuild Agent registry.
 
 ## Install In Codex
 
@@ -45,7 +45,7 @@ node scripts/live-smoke.mjs --base-url https://geo.youngtuo.win/build --require-
 - `SKILL.md` - Codex skill entrypoint.
 - `references/architecture.md` - GeoBuild architecture and runtime layers.
 - `references/workflows.md` - API and operational workflow runbook.
-- `references/tool-map.md` - 91-tool Agent registry map.
+- `references/tool-map.md` - 93-tool Agent registry map.
 - `references/implementation-blueprint.md` - build-from-scratch implementation plan.
 - `scripts/live-smoke.mjs` - dependency-free production smoke test.
 

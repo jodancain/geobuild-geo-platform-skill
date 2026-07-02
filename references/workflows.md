@@ -220,6 +220,17 @@ curl -sS -X POST "$BASE/api/workspace/social-upload-tasks/smoke" \
 
 The smoke route remains dry-run only. `repairAssetBackups=true` also writes or refreshes the task-level database backup for `cover.png`, `caption.md`, and `payload.json`, so a Zeabur restart can restore local files even before an external S3/R2/COS bucket is configured.
 
+Execute exactly one reviewed platform task only after readiness says the runner is in execute mode, `sau` is installed, assets are available, and the platform account is logged in:
+
+```bash
+curl -sS -X POST "$BASE/api/workspace/social-upload-tasks/execute" \
+  "${ADMIN_HEADER[@]}" \
+  -H "Content-Type: application/json" \
+  -d '{"taskId":"<social-upload-task-id>","confirmationPhrase":"确认发布"}'
+```
+
+The execute route refuses bulk execution and returns `blocked` instead of posting when `SOCIAL_UPLOAD_RUNNER_ENABLED`, `SOCIAL_UPLOAD_RUNNER_MODE=execute`, `SOCIAL_UPLOAD_TOOL_DIR`, or account login/session readiness is missing.
+
 Mark platform status only after real human confirmation:
 
 ```bash
