@@ -75,7 +75,7 @@ Run the customer GEO workflow in this order:
 For the original production target, always refresh the live baseline before current-state answers. Last observed during social-upload execute gate deployment on 2026-07-02:
 
 - Base URL: `https://geo.youngtuo.win/build`
-- Release commit: `ff09f5b0c9bfaa97f987a2a187de3730fc69fc87`
+- Release commit: `72981373ae4531da339a3cde431a9e3c734c395e`
 - Release source: `github-actions-zeabur-upload`
 - Health: DB true, Redis true, Agent kernel true
 - Reach platforms ready: Doubao, DeepSeek, Claude, ChatGPT, Gemini
